@@ -130,15 +130,15 @@ var Dropdown = Class.create( {
     var elementPos = this.element.viewportOffset();
     var screenDim  = document.viewport.getDimensions();
     var mid = screenDim.width / 2;
-    return mid < elementPos.first();
+    return mid < elementPos[0];
   },
   figureOutPosition: function(){
     var pos   = this.baseEvent.element().viewportOffset();
     var viewp = document.viewport.getScrollOffsets();
     var elDim = this.element.getDimensions();
-    var properTop = pos.last() + viewp.last() + elDim.height;
+    var properTop = pos[1] + viewp[1] + elDim.height;
     if(this.options.offsetTop !== false){ properTop += this.options.offsetTop }
-    var properLeft = pos.first();
+    var properLeft = pos[0];
     if(this.options.offsetLeft !== false){ properLeft += this.options.offsetLeft }
     var style = "top:#{top}px;left:#{left}px;".interpolate({ top:properTop, left:properLeft });
     return style;
